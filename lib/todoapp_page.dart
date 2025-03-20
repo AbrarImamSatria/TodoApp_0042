@@ -296,6 +296,15 @@ class _TodoAppPageState extends State<TodoAppPage> {
                                 ),
                               ],
                             ),
+                            trailing: Checkbox(
+                              value: task.isDone,
+                              onChanged: (value) => _toggleTaskStatus(index),
+                              activeColor: Colors.purple,
+                              side: BorderSide(
+                                color: const Color.fromARGB(255, 0, 255, 217),
+                                width: 2,
+                              ),
+                            ),
                           ),
                         );
                       },
