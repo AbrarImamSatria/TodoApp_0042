@@ -47,6 +47,23 @@ class _TodoAppPageState extends State<TodoAppPage> {
       _selectedDateTime = null;
       _showDateValidationError = false;
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: const Text(
+        'Task added successfully',
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      ),
+      backgroundColor: Colors.teal,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      margin: const EdgeInsets.all(16),
+      elevation: 6,
+      duration: const Duration(seconds: 2),
+    ),
+  );
   }
 }
   
