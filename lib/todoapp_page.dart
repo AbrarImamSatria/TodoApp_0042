@@ -7,6 +7,13 @@ class TodoAppPage extends StatefulWidget {
   State<TodoAppPage> createState() => _TodoAppPageState();
 }
 
+class Task {
+  final String name;
+  final DateTime deadline;
+  bool isDone;
+  Task({required this.name, required this.deadline, this.isDone = false});
+}
+
 class _TodoAppPageState extends State<TodoAppPage> {
   @override
   Widget build(BuildContext context) {
