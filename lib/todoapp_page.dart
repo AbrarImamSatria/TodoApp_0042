@@ -130,7 +130,7 @@ class _TodoAppPageState extends State<TodoAppPage> {
     );
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Center(child: const Text('Form Page'))),
@@ -224,7 +224,6 @@ class _TodoAppPageState extends State<TodoAppPage> {
                     ),
                   ),
                   const SizedBox(width: 12),
-
                   SizedBox(
                     height: 45,
                     width: 110,
@@ -246,16 +245,48 @@ class _TodoAppPageState extends State<TodoAppPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                ],
+              ),
+              const SizedBox(height: 24),
 
-                  const Text(
-                    'List Tasks',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
+              const Text(
+                'List Tasks',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
 
-                  Expanded(
-                    child: ListView.builder(
+              Expanded(
+                child: _tasks.isEmpty 
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.task_alt,
+                            size: 64,
+                            color: Colors.grey[400],
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'Belum ada data task',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Tambahkan task baru dengan form di atas',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[500],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : ListView.builder(
                       itemCount: _tasks.length,
                       itemBuilder: (context, index) {
                         final task = _tasks[index];
@@ -288,8 +319,7 @@ class _TodoAppPageState extends State<TodoAppPage> {
                                 Text(
                                   task.isDone ? 'Done' : 'Not Done',
                                   style: TextStyle(
-                                    color:
-                                        task.isDone ? Colors.green : Colors.red,
+                                    color: task.isDone ? Colors.green : Colors.red,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 15,
                                   ),
@@ -309,8 +339,6 @@ class _TodoAppPageState extends State<TodoAppPage> {
                         );
                       },
                     ),
-                  ),
-                ],
               ),
             ],
           ),
