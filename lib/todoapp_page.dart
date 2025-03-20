@@ -66,6 +66,12 @@ class _TodoAppPageState extends State<TodoAppPage> {
   );
   }
 }
+
+void _toggleTaskStatus(int index) {
+  setState(() {
+    _tasks[index].isDone = !_tasks[index].isDone;
+  });
+}
   
   @override
   Widget build(BuildContext context) {
