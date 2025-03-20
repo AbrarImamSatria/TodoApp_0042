@@ -224,6 +224,28 @@ class _TodoAppPageState extends State<TodoAppPage> {
                     ),
                   ),
                   const SizedBox(width: 12),
+
+                  SizedBox(
+                    height: 45,
+                    width: 110,
+                    child: ElevatedButton(
+                      onPressed: _addTask,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 0,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: const Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
