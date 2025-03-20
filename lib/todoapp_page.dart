@@ -72,6 +72,26 @@ void _toggleTaskStatus(int index) {
     _tasks[index].isDone = !_tasks[index].isDone;
   });
 }
+
+void _dateTimePicker() {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext builder) {
+      final now = DateTime.now();
+      final initialDateTime = _selectedDateTime ?? now;
+
+      return Container(
+        height: MediaQuery.of(context).copyWith().size.height / 3,
+        color: Colors.white,
+        child: Column(
+          children: [
+            
+          ],
+        ),
+      );
+    },
+  );
+}
   
   @override
   Widget build(BuildContext context) {
