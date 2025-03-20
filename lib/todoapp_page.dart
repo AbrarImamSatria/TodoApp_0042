@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 class TodoAppPage extends StatefulWidget {
   const TodoAppPage({super.key});
@@ -140,7 +141,40 @@ class _TodoAppPageState extends State<TodoAppPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Task Date:',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          _selectedDateTime == null
+                              ? 'Select a date'
+                              : DateFormat(
+                                'dd-MM-yyyy HH:mm',
+                              ).format(_selectedDateTime!),
+                          style: TextStyle(
+                            color:
+                                (_showDateValidationError &&
+                                        _selectedDateTime == null)
+                                    ? const Color.fromARGB(255, 0, 0, 0)
+                                    : Colors.black,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
