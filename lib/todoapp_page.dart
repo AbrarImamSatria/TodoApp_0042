@@ -26,6 +26,29 @@ class _TodoAppPageState extends State<TodoAppPage> {
     _nameController.dispose();
     super.dispose();
   }
+
+  void _addTask() {
+  if (_selectedDateTime == null) {
+    setState(() {
+      _showDateValidationError = true;
+    });
+  }
+
+  if (_formKey.currentState!.validate() && _selectedDateTime != null) {
+    setState(() {
+      _tasks.add(
+        Task(
+          name: _nameController.text,
+          deadline: _selectedDateTime!,
+          isDone: false,
+        ),
+      );
+      _nameController.clear();
+      _selectedDateTime = null;
+      _showDateValidationError = false;
+    });
+  }
+}
   
   @override
   Widget build(BuildContext context) {
