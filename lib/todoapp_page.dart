@@ -15,8 +15,21 @@ class Task {
 }
 
 class _TodoAppPageState extends State<TodoAppPage> {
+  final TextEditingController _nameController = TextEditingController();
+  DateTime? _selectedDateTime;
+  final List<Task> _tasks = [];
+  final _formKey = GlobalKey<FormState>();
+  bool _showDateValidationError = false;
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    // Build method akan ditambahkan nanti
+    return Scaffold();
   }
 }
