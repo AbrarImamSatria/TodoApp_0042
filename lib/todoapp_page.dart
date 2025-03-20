@@ -183,6 +183,12 @@ class _TodoAppPageState extends State<TodoAppPage> {
                   ),
                 ],
               ),
+              if (_showDateValidationError && _selectedDateTime == null)
+                const Text(
+                  'Please select a date',
+                  style: TextStyle(color: Colors.red, fontSize: 14),
+                ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
