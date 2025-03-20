@@ -253,6 +253,24 @@ class _TodoAppPageState extends State<TodoAppPage> {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
+
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: _tasks.length,
+                      itemBuilder: (context, index) {
+                        final task = _tasks[index];
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 15, 0, 0),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ListTile(
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ],
