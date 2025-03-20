@@ -131,6 +131,20 @@ class _TodoAppPageState extends State<TodoAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: Center(child: const Text('Form Page'))),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
