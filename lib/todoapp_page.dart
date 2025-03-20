@@ -285,6 +285,15 @@ class _TodoAppPageState extends State<TodoAppPage> {
                                     fontSize: 15,
                                   ),
                                 ),
+                                Text(
+                                  task.isDone ? 'Done' : 'Not Done',
+                                  style: TextStyle(
+                                    color:
+                                        task.isDone ? Colors.green : Colors.red,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
