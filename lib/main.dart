@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stateless_statefull/profile_page.dart';
+import 'package:stateless_statefull/todoapp_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const ProfilePage(),
+      home: const TodoAppPage(),
       debugShowCheckedModeBanner: false,
     );
   }
