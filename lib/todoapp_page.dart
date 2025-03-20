@@ -266,6 +266,14 @@ class _TodoAppPageState extends State<TodoAppPage> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: ListTile(
+                            title: Text(
+                              task.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.orangeAccent,
+                              ),
+                            ),
                           ),
                         );
                       },
