@@ -108,6 +108,20 @@ class _TodoAppPageState extends State<TodoAppPage> {
                 ],
               ),
               const Divider(height: 0, thickness: 1),
+              Expanded(
+                child: CupertinoDatePicker(
+                  initialDateTime: initialDateTime,
+                  onDateTimeChanged: (DateTime newDateTime) {
+                    setState(() {
+                      _selectedDateTime = newDateTime;
+                      _showDateValidationError = false;
+                    });
+                  },
+                  use24hFormat: false,
+                  minuteInterval: 1,
+                  mode: CupertinoDatePickerMode.dateAndTime,
+                ),
+              ),
             ],
           ),
         );
@@ -117,7 +131,6 @@ class _TodoAppPageState extends State<TodoAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Build method akan ditambahkan nanti
     return Scaffold();
   }
 }
