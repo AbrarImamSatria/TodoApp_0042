@@ -173,6 +173,14 @@ class _TodoAppPageState extends State<TodoAppPage> {
                       ],
                     ),
                   ),
+                  IconButton(
+                    onPressed: _dateTimePicker,
+                    icon: const Icon(
+                      Icons.calendar_today,
+                      color: Colors.purple,
+                      size: 35,
+                    ),
+                  ),
                 ],
               ),
             ],
