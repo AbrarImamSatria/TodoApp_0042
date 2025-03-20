@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class TodoAppPage extends StatefulWidget {
   const TodoAppPage({super.key});
@@ -28,71 +29,92 @@ class _TodoAppPageState extends State<TodoAppPage> {
   }
 
   void _addTask() {
-  if (_selectedDateTime == null) {
+    if (_selectedDateTime == null) {
+      setState(() {
+        _showDateValidationError = true;
+      });
+    }
+
+    if (_formKey.currentState!.validate() && _selectedDateTime != null) {
+      setState(() {
+        _tasks.add(
+          Task(
+            name: _nameController.text,
+            deadline: _selectedDateTime!,
+            isDone: false,
+          ),
+        );
+        _nameController.clear();
+        _selectedDateTime = null;
+        _showDateValidationError = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            'Task added successfully',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.teal,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          margin: const EdgeInsets.all(16),
+          elevation: 6,
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
+  void _toggleTaskStatus(int index) {
     setState(() {
-      _showDateValidationError = true;
+      _tasks[index].isDone = !_tasks[index].isDone;
     });
   }
 
-  if (_formKey.currentState!.validate() && _selectedDateTime != null) {
-    setState(() {
-      _tasks.add(
-        Task(
-          name: _nameController.text,
-          deadline: _selectedDateTime!,
-          isDone: false,
-        ),
-      );
-      _nameController.clear();
-      _selectedDateTime = null;
-      _showDateValidationError = false;
-    });
+  void _dateTimePicker() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext builder) {
+        final now = DateTime.now();
+        final initialDateTime = _selectedDateTime ?? now;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: const Text(
-        'Task added successfully',
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      ),
-      backgroundColor: Colors.teal,
-      behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      margin: const EdgeInsets.all(16),
-      elevation: 6,
-      duration: const Duration(seconds: 2),
-    ),
-  );
+        return Container(
+          height: MediaQuery.of(context).copyWith().size.height / 3,
+          color: Colors.white,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CupertinoButton(
+                    child: const Text('Cancel'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  Text(
+                    'Set Task Date & Time',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  CupertinoButton(
+                    child: const Text('Select'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+              const Divider(height: 0, thickness: 1),
+            ],
+          ),
+        );
+      },
+    );
   }
-}
 
-void _toggleTaskStatus(int index) {
-  setState(() {
-    _tasks[index].isDone = !_tasks[index].isDone;
-  });
-}
-
-void _dateTimePicker() {
-  showModalBottomSheet(
-    context: context,
-    builder: (BuildContext builder) {
-      final now = DateTime.now();
-      final initialDateTime = _selectedDateTime ?? now;
-
-      return Container(
-        height: MediaQuery.of(context).copyWith().size.height / 3,
-        color: Colors.white,
-        child: Column(
-          children: [
-            
-          ],
-        ),
-      );
-    },
-  );
-}
-  
   @override
   Widget build(BuildContext context) {
     // Build method akan ditambahkan nanti
