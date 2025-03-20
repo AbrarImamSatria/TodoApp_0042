@@ -274,6 +274,19 @@ class _TodoAppPageState extends State<TodoAppPage> {
                                 color: Colors.orangeAccent,
                               ),
                             ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Deadline: ${DateFormat('dd-MM-yyyy HH:mm').format(task.deadline)}',
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
